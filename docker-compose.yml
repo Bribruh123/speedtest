@@ -30,9 +30,9 @@ services:
     networks:
       - localnetwork
 
-  agent:
+  collection_agent:
     build: 
-      context: .
+      context: ./get_speed_test
       dockerfile: Dockerfile
     links:
       - influxdb
