@@ -69,22 +69,12 @@ while True:
     # Https request to pull QoS data from router
     url = "https://routerlogin.net/refresh_dev.htm?ts={}".format(millisec)
 
+
+
     payload = {}
     headers = {
-      'Accept': 'application/json, text/javascript, */*; q=0.01',
-      'Accept-Language': 'en-US,en;q=0.9',
       'Authorization': 'Basic YWRtaW46ZDY5YWRyUFJyUTl4QFlI',
-      'Connection': 'keep-alive',
-      'Cookie': 'optimizelyEndUserId=oeu1689251762689r0.9599328553140711; _gcl_au=1.1.158394634.1689251763; _ce.s=v~bf19a04049373559b431d83d3da3cf08bdec976e~lcw~1689251763343~vpv~0~lcw~1689251763344; _ga=GA1.2.970939720.1689251764; _ga_FJW3T6WEP0=GS1.1.1689251763.1.0.1689251779.0.0.0; auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTAxODYiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.dd27842b6d81083ddea2ffdc6fa85af621e0a73a9743ad118dc081754ff0fe7f; auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyODk1MzMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.f601c8b95bb687546e4c5c99c07c2dfc4e1d4bee1d186e9e2f161ea46e642dbe',
-      'Referer': 'https://routerlogin.net/QOS_list_device.htm',
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Site': 'same-origin',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
-      'X-Requested-With': 'XMLHttpRequest',
-      'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
-      'sec-ch-ua-mobile': '?0',
-      'sec-ch-ua-platform': '"Windows"'
+      'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
     }
 
     response = requests.request("GET", url, headers=headers, data=payload, verify=False)
