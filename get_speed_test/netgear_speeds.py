@@ -78,7 +78,9 @@ while True:
     }
 
     response = requests.request("GET", url, headers=headers, data=payload, verify=False)
-
+    print(response)
+    print(response.status_code)
+    print(response.reason)
     print(response.text)
     dictData= json.loads(response.text)
 
