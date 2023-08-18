@@ -1,0 +1,6 @@
+venv/
+netgear_speeds_dev.py
+speed_test.py
+vols/
+__pycache__/
+conf/
