@@ -43,7 +43,7 @@ def get_device_speeds(dictData):
     return points
 
 def get_agent_speeds():
-    s = speedtest.Speedtest()
+    s = speedtest.Speedtest(secure=True)
     downspeed = round((round(s.download()) / 1048576), 2)
     upspeed = round((round(s.upload()) / 1048576), 2)
     point = (
@@ -62,9 +62,7 @@ write_client = InfluxDBClient(url=url, token=token, org=org)
 while True:
 
     # Collect current timestamp (miliseconds)
-    time_now = datetime.datetime.now().strftime("%H:%M:%S")
-    dt_obj = datetime.datetime.now().strptime('20.12.2016 09:38:42,76',
-       '%d.%m.%Y %H:%M:%S,%f')
+    dt_obj = datetime.datetime.now()
     millisec = int(dt_obj.timestamp() * 1000)
     print(millisec)
 
