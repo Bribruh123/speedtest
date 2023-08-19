@@ -43,7 +43,7 @@ def get_device_speeds(dictData):
     return points
 
 def get_agent_speeds():
-    s = speedtest.Speedtest(secure=True)
+    s = speedtest.Speedtest()
     downspeed = round((round(s.download()) / 1048576), 2)
     upspeed = round((round(s.upload()) / 1048576), 2)
     point = (
@@ -67,7 +67,7 @@ while True:
     print(millisec)
 
     # Https request to pull QoS data from router
-    url = "https://routerlogin.net/refresh_dev.htm?ts={}".format(millisec)
+    url_router = "https://routerlogin.net/refresh_dev.htm"
 
 
 
@@ -77,7 +77,7 @@ while True:
       'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
     }
 
-    response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+    response = requests.request("GET", url_router, headers=headers, data=payload, verify=False)
     print(response)
     print(response.status_code)
     print(response.reason)

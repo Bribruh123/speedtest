@@ -20,7 +20,9 @@ while True:
     if millisec - last_time > 2000:
         print("PASSED")
         last_time = millisec
-        url = "https://routerlogin.net/func.cgi?/QOS_dynamic.htm %20timestamp={}".format(last_time)
+        # url = "https://routerlogin.net/func.cgi?/QOS_dynamic.htm %20timestamp={}".format(last_time)
+
+        url = "https://routerlogin.net/func.cgi?/QOS_dynamic.htm%20timestamp=0000834414932"
 
         payload = 'submit_flag=ookla_speedtest&hid_trend_micro_enable=&hid_bandwidth_type=&hid_trend_micro_uplink=&hid_trend_micro_downlink=&hid_first_flag=&hid_detect_database=&hid_improve_service=&hid_update_agreement=0&hid_cancel_speedtest=0&dynamic_qos_enable=on&qosSetting=1&downlink_value=&uplink_value=&AutoUpdateEnable=0&help_improve=0'
         headers = {
@@ -30,7 +32,7 @@ while True:
           'Cache-Control': 'max-age=0',
           'Connection': 'keep-alive',
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Cookie': 'optimizelyEndUserId=oeu1689251762689r0.9599328553140711; _gcl_au=1.1.158394634.1689251763; _ce.s=v~bf19a04049373559b431d83d3da3cf08bdec976e~lcw~1689251763343~vpv~0~lcw~1689251763344; _ga=GA1.2.970939720.1689251764; _ga_FJW3T6WEP0=GS1.1.1689251763.1.0.1689251779.0.0.0; auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyNjQyNDciLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.fe6918677fac63e5f6a72d2c5124da3421ddf5a1b243d17d39981122561dab74',
+          'Cookie': 'optimizelyEndUserId=oeu1689251762689r0.9599328553140711; _gcl_au=1.1.158394634.1689251763; _ce.s=v~bf19a04049373559b431d83d3da3cf08bdec976e~lcw~1689251763343~vpv~0~lcw~1689251763344; _ga=GA1.2.970939720.1689251764; _ga_FJW3T6WEP0=GS1.1.1689251763.1.0.1689251779.0.0.0; auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIzNTMwNzEiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.4bf4e7f49cca828c4f609bff70aeeb32c11f27b4655e452f5abf4570b8ee880f; auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIzNTI5NjQiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.9d071f79dd3eaed07750ce8250d6da01881b5455b8eaa923f4dfa73674abf2b0',
           'Origin': 'https://routerlogin.net',
           'Referer': 'https://routerlogin.net/QOS_dynamic.htm',
           'Sec-Fetch-Dest': 'iframe',
@@ -38,10 +40,14 @@ while True:
           'Sec-Fetch-Site': 'same-origin',
           'Sec-Fetch-User': '?1',
           'Upgrade-Insecure-Requests': '1',
-          'sec-ch-ua-mobile': '?0'
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+          'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
+          'sec-ch-ua-mobile': '?0',
+          'sec-ch-ua-platform': '"Windows"'
         }
 
-        response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+        response = requests.request("POST", url, headers=headers, data=payload)
+
         print(response.text)
         time.sleep(4)
         url_check = "https://routerlogin.net/QOS_speedtest_result.htm"
@@ -68,5 +74,5 @@ while True:
 
         print(response.text)
     print(last_time, millisec)
-    time.sleep(5)
+    time.sleep(300)
 
