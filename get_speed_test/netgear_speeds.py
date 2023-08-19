@@ -99,5 +99,5 @@ while True:
     write_api.write(bucket=bucket, org=org, record=host_points)
 
     # Rest 10 seconds
-    time.sleep(10)
+    time.sleep(300)
 
