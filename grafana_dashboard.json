@@ -733,7 +733,7 @@
         },
         "viewMode": "list"
       },
-      "title": "Alerts (Norma)",
+      "title": "Alerts (Normal)",
       "transparent": true,
       "type": "alertlist"
     },
@@ -982,8 +982,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "yellow",
@@ -1111,8 +1110,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1456,6 +1454,6 @@
   "timezone": "",
   "title": "Network Monitoring",
   "uid": "c5378ed3-b9a1-4b82-a026-358615e6f25a",
-  "version": 22,
+  "version": 23,
   "weekStart": ""
 }
