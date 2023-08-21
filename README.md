@@ -53,7 +53,8 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
    - Add InfluxDB data source
      - From welcome screen, select 'Add your first data source':
     
-       ![image](https://github.com/Bribruh123/speedtest/assets/87781032/f3b79ce9-8140-4364-b15b-4870e74190f0)
+       ![image](https://github.com/Bribruh123/speedtest/assets/87781032/6262db74-ac7b-46c3-919a-c1c455f80915)
+
 
      - Select '+ Add new data source'
      - Select ''Influx DB
@@ -69,7 +70,8 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
 6) Import pre build dashboard from json:
    - Navigate to Dashboards and select 'New' -> 'Import':
   
-     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/ca4f3c58-92dc-4aba-9762-0d364f179475)
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/92626276-aab5-40fc-a753-cae308f62019)
+
 
    - Either upload [grafana_dashboard.json](https://github.com/Bribruh123/speedtest/blob/master/grafana_dashboard.json) or copy its contents into 'Import via pannel Json' field
    - Select previously configured InfluxDB data source in 'InfluxDB' dropdown
