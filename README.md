@@ -44,29 +44,29 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
    $ docker compose up
    ```
 
-5) After containers have sucessfully started, access Grafana UI and add data source
+5) After containers have sucessfully started, access Grafana UI and add data source:
 
    - From a browser, load grafana with url containing IP address of host machine:
 
      http://[HOST_IP_ADDRESS]:3000/
 
-   - Add InfluxDB data source
+   - Add InfluxDB data source:
      - From welcome screen, select 'Add your first data source':
     
        ![image](https://github.com/Bribruh123/speedtest/assets/87781032/6262db74-ac7b-46c3-919a-c1c455f80915)
 
 
      - Select '+ Add new data source'
-     - Select ''Influx DB
+     - Select 'Influx DB'
      - Insert InfluxDB instance details:
        - HTTP
-         - URL: http://influxdb:8086
+         - URL: 'http://influxdb:8086'
        - Custom HTTP Headers:
          - Header: 'Authorization'
          - Value: 'Token veryverysecuretoken'
        - InfluxDB Details:
-         - Database: 'Logs'
-       - Select Save & test
+         - Database: 'LOGS'
+       - Select 'Save & test'
 6) Import pre build dashboard from json:
    - Navigate to Dashboards and select 'New' -> 'Import':
   
