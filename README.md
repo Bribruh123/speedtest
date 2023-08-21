@@ -46,7 +46,7 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
 
 5) After containers have sucessfully started, access Grafana UI and add data source
 
-   - From a browser, load grafana with url of host machine:
+   - From a browser, load grafana with url containing IP address of host machine:
 
      http://[HOST_IP_ADDRESS]:3000/
 
