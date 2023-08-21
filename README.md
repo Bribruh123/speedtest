@@ -4,7 +4,7 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
 
 ### Dependencies
 
-- [Docker Sever](https://docs.docker.com/engine/install/#server)
+- [Docker](https://docs.docker.com/engine/install/)
 
 - [docker compose](https://docs.docker.com/compose/install/linux/)
 
