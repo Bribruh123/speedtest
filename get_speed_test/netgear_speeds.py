@@ -73,8 +73,6 @@ while True:
     router_username = os.environ["ROUTER_USERNAME"]
     router_password = os.environ["ROUTER_PASSWORD"]
     encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
-    print(router_username, router_password)
-    print(encoded.decode("ascii"))
 
     payload = {}
     headers = {
@@ -83,7 +81,6 @@ while True:
     }
 
     response = requests.request("GET", url_router, headers=headers, data=payload, verify=False)
-    print(response)
     print(response.status_code)
     print(response.reason)
     print(response.text)
