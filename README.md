@@ -2,6 +2,7 @@
 
 Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router and devices in network. 
 
+
 ![image](https://github.com/Bribruh123/speedtest/assets/87781032/3595edac-eec5-4bb3-a2ae-1827a84373f4)
 
 ### Dependencies
