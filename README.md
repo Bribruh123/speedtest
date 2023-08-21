@@ -8,6 +8,21 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
 
 - [docker compose](https://docs.docker.com/compose/install/linux/)
 
+- Enable QoS on Netgear Nighthawk router:
+   - From a browser, login to https://routerlogin.net/
+   - Navigate to 'Quality of Service' tab:
+ 
+      ![image](https://github.com/Bribruh123/speedtest/assets/87781032/1db24253-bf86-42d2-b1e1-688e867fe106)
+
+   - Select 'Enable Qos' and 'Automatically update performance optimization database':
+
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/21600324-26a9-4977-8352-b7df3858851b)
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/93769bd1-0d51-4b15-871e-bfd597a63c06)
+
+   - Select 'Apply' and logout of router
+
+
+
 ### Set up and install
 
 1) Clone repository into host enviornment:
@@ -31,7 +46,7 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
 
 5) After containers have sucessfully started, access Grafana UI and add data source
 
-   - From a browser load grafana with url of host machine:
+   - From a browser, load grafana with url of host machine:
 
      http://[HOST_IP_ADDRESS]:3000/
 
