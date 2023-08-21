@@ -5,7 +5,8 @@ from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 import requests
 import json
-from decimal import Decimal
+import os
+import base64
 
 # Collect data from router and parse
 def get_netgear_speeds(dictData):
@@ -69,11 +70,15 @@ while True:
     # Https request to pull QoS data from router
     url_router = "https://routerlogin.net/refresh_dev.htm"
 
-
+    router_username = os.environ["ROUTER_USERNAME"]
+    router_password = os.environ["ROUTER_PASSWORD"]
+    encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
+    print(router_username, router_password)
+    print(encoded.decode("ascii"))
 
     payload = {}
     headers = {
-      'Authorization': 'Basic YWRtaW46ZDY5YWRyUFJyUTl4QFlI',
+      'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
       'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
     }
 

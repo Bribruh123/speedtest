@@ -34,6 +34,9 @@ services:
     build: 
       context: ./get_speed_test
       dockerfile: Dockerfile
+    environment:
+      - ROUTER_USERNAME=${ROUTER_USERNAME}
+      - ROUTER_PASSWORD=${ROUTER_PASSWORD}
     links:
       - influxdb
     restart: always
