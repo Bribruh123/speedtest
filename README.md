@@ -67,7 +67,7 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
        - InfluxDB Details:
          - Database: 'LOGS'
        - Select 'Save & test'
-6) Import pre build dashboard from json:
+6) Import pre built dashboard from json:
    - Navigate to Dashboards and select 'New' -> 'Import':
   
      ![image](https://github.com/Bribruh123/speedtest/assets/87781032/92626276-aab5-40fc-a753-cae308f62019)
