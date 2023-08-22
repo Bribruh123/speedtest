@@ -30,10 +30,26 @@ services:
     networks:
       - localnetwork
 
+  grafana_conf_agent:
+    build: 
+      context: ./grafana_conf
+      dockerfile: Dockerfile
+    depends_on:
+      - influxdb
+      - grafana
+    links:
+      - influxdb
+    restart: on-failure
+    networks:
+      - localnetwork
+
   collection_agent:
     build: 
       context: ./get_speed_test
       dockerfile: Dockerfile
+    depends_on:
+      - influxdb
+      - grafana
     environment:
       - ROUTER_USERNAME=${ROUTER_USERNAME}
       - ROUTER_PASSWORD=${ROUTER_PASSWORD}
