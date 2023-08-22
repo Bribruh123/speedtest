@@ -2,11 +2,29 @@
 
 Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router and devices in network. 
 
+
+![image](https://github.com/Bribruh123/speedtest/assets/87781032/3595edac-eec5-4bb3-a2ae-1827a84373f4)
+
 ### Dependencies
 
 - [Docker](https://docs.docker.com/engine/install/)
 
 - [docker compose](https://docs.docker.com/compose/install/linux/)
+
+- Enable QoS on Netgear Nighthawk router:
+   - From a browser, login to https://routerlogin.net/
+   - Navigate to 'Quality of Service' tab:
+ 
+      ![image](https://github.com/Bribruh123/speedtest/assets/87781032/1db24253-bf86-42d2-b1e1-688e867fe106)
+
+   - Select 'Enable Qos' and 'Automatically update performance optimization database':
+
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/21600324-26a9-4977-8352-b7df3858851b)
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/93769bd1-0d51-4b15-871e-bfd597a63c06)
+
+   - Select 'Apply' and logout of router
+
+
 
 ### Set up and install
 
@@ -29,36 +47,42 @@ Python, InfluxDB and Grafana stack for monitoring speeds of a host agent, router
    $ docker compose up
    ```
 
-5) After containers have sucessfully started, access Grafana UI and add data source
+5) After containers have sucessfully started, access Grafana UI and add data source:
 
-   - From a browser load grafana with url of host machine:
+   - From a browser, load grafana with url containing IP address of host machine and pre-set credentials:
 
-     http://[HOST_IP_ADDRESS]:3000/
+     - http://[HOST_IP_ADDRESS]:3000/
+     - Username: 'admin'
+     - Password: 'admin'
 
-   - Add InfluxDB data source
+   - Add InfluxDB data source:
      - From welcome screen, select 'Add your first data source':
     
-       ![image](https://github.com/Bribruh123/speedtest/assets/87781032/f3b79ce9-8140-4364-b15b-4870e74190f0)
+       ![image](https://github.com/Bribruh123/speedtest/assets/87781032/6262db74-ac7b-46c3-919a-c1c455f80915)
+
 
      - Select '+ Add new data source'
-     - Select ''Influx DB
+     - Select 'Influx DB'
      - Insert InfluxDB instance details:
        - HTTP
-         - URL: http://influxdb:8086
+         - URL: 'http://influxdb:8086'
        - Custom HTTP Headers:
          - Header: 'Authorization'
          - Value: 'Token veryverysecuretoken'
        - InfluxDB Details:
-         - Database: 'Logs'
-       - Select Save & test
-6) Import pre build dashboard from json:
+         - Database: 'LOGS'
+       - Select 'Save & test'
+6) Import pre-built dashboard from json:
    - Navigate to Dashboards and select 'New' -> 'Import':
   
-     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/ca4f3c58-92dc-4aba-9762-0d364f179475)
+     ![image](https://github.com/Bribruh123/speedtest/assets/87781032/92626276-aab5-40fc-a753-cae308f62019)
+
 
    - Either upload [grafana_dashboard.json](https://github.com/Bribruh123/speedtest/blob/master/grafana_dashboard.json) or copy its contents into 'Import via pannel Json' field
    - Select previously configured InfluxDB data source in 'InfluxDB' dropdown
    - Select 'Import'
 
-Enjoy!  
+#### Enjoy!
+
+
 
