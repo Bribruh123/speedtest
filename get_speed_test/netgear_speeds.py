@@ -67,37 +67,37 @@ while True:
     millisec = int(dt_obj.timestamp() * 1000)
     print(millisec)
 
-    # Https request to pull QoS data from router
-    url_router = "https://routerlogin.net/refresh_dev.htm"
+    # # Https request to pull QoS data from router
+    # url_router = "https://routerlogin.net/refresh_dev.htm"
 
-    router_username = os.environ["ROUTER_USERNAME"]
-    router_password = os.environ["ROUTER_PASSWORD"]
-    encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
+    # router_username = os.environ["ROUTER_USERNAME"]
+    # router_password = os.environ["ROUTER_PASSWORD"]
+    # encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
 
-    payload = {}
-    headers = {
-      'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
-      'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
-    }
+    # payload = {}
+    # headers = {
+    #   'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
+    #   'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
+    # }
 
-    response = requests.request("GET", url_router, headers=headers, data=payload, verify=False)
-    print(response.status_code)
-    print(response.reason)
-    print(response.text)
-    dictData= json.loads(response.text)
+    # response = requests.request("GET", url_router, headers=headers, data=payload, verify=False)
+    # print(response.status_code)
+    # print(response.reason)
+    # print(response.text)
+    # dictData= json.loads(response.text)
 
-    # parse data from router
-    netgear_points = get_netgear_speeds(dictData)
+    # # parse data from router
+    # netgear_points = get_netgear_speeds(dictData)
 
-    # parse data from router
-    device_points = get_device_speeds(dictData)
+    # # parse data from router
+    # device_points = get_device_speeds(dictData)
 
     host_points = get_agent_speeds()
     
     write_api = write_client.write_api(write_options=SYNCHRONOUS)
     bucket="LOGS"
-    write_api.write(bucket=bucket, org=org, record=netgear_points)
-    write_api.write(bucket=bucket, org=org, record=device_points)
+    # write_api.write(bucket=bucket, org=org, record=netgear_points)
+    # write_api.write(bucket=bucket, org=org, record=device_points)
     write_api.write(bucket=bucket, org=org, record=host_points)
 
     # Rest 10 seconds
