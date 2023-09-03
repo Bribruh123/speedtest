@@ -12,8 +12,8 @@ import base64
 def get_netgear_speeds(dictData):
 
     # Router speeds
-    upSpeed = float(dictData['upSpeed'].split(" ")[0])
-    downSpeed= float(dictData['downSpeed'].split(" ")[0]) 
+    downSpeed = float(response.text.split(";")[0])/1000000
+    upSpeed = float(response.text.split(";")[1])/1000000
     netgear_point = (
         Point("Netgear_speeds")
         .tag("tagname1", "tagvalue1")
@@ -26,18 +26,18 @@ def get_netgear_speeds(dictData):
 def get_device_speeds(dictData):
     points = []
     # Device speeds
-    for device in dictData['devices']:
-        print(device['deviceName'])
+    for device in dictData['connDevices']:
+        print(device['name'])
         point = (
-          Point("device_speeds")
-          .tag("deviceName", device['deviceName'])
-          .field("deviceName", device['deviceName'])  
-          .field("upSpeed", float(device['upSpeed'].split(" ")[0]))
-          .field("downSpeed", float(device['downSpeed'].split(" ")[0]))
+            Point("device_speeds")
+        .tag("deviceName", device['name'])
+        .field("deviceName", device['name'])  
+         .field("upSpeed", float(device['uploadSpeedStr'].split(" ")[0]))
+       .field("downSpeed", float(device['downloadSpeedStr'].split(" ")[0]))
           .field("priority", device['priority'])
-          .field("connType", device['connType'])
+          .field("connType", device['connection'])
           .field("ip", device['ip'])
-          .field("deviceModel", device['deviceModel'])
+          .field("deviceModel", device['model'])
           .field("mac", device['mac'])
         )
         points.append(point)
@@ -70,34 +70,43 @@ while True:
     # # Https request to pull QoS data from router
     # url_router = "https://routerlogin.net/refresh_dev.htm"
 
-    # router_username = os.environ["ROUTER_USERNAME"]
-    # router_password = os.environ["ROUTER_PASSWORD"]
-    # encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
+    router_username = os.environ["ROUTER_USERNAME"]
+    router_password = os.environ["ROUTER_PASSWORD"]
+    encoded = base64.b64encode("{}:{}".format(router_username, router_password).encode("ascii"))
 
-    # payload = {}
-    # headers = {
-    #   'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
-    #   'Cookie': 'auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOiIyOTA4MTMiLCJpc3MiOiJ3d3cubmV0Z2Vhci5jb20iLCJzdWIiOiIobnVsbCkifQ==.7a55694a97ad4193da79c827cd3555c854f47bb9435817f149aebfa53e034464'
-    # }
+    payload = {}
+    headers = {
+      'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
+      'Cookie': 'XSRF_TOKEN=2596016862'
+    }
 
-    # response = requests.request("GET", url_router, headers=headers, data=payload, verify=False)
-    # print(response.status_code)
-    # print(response.reason)
-    # print(response.text)
-    # dictData= json.loads(response.text)
 
+    url = "http://routerlogin.net/ajax/devices_table_result"
+
+    response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+
+
+    dictData= json.loads(response.text)
+    print(dictData)
+    device_points = get_device_speeds(dictData)
+
+    url = "http://routerlogin.net/ajax/devices_table_result"
+
+    response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+
+    url = "http://routerlogin.net/qos_uplink_check.php"
+
+
+    response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+    print(response)
     # # parse data from router
-    # netgear_points = get_netgear_speeds(dictData)
-
-    # # parse data from router
-    # device_points = get_device_speeds(dictData)
-
+    netgear_points = get_netgear_speeds(response.text)
     host_points = get_agent_speeds()
     
     write_api = write_client.write_api(write_options=SYNCHRONOUS)
     bucket="LOGS"
-    # write_api.write(bucket=bucket, org=org, record=netgear_points)
-    # write_api.write(bucket=bucket, org=org, record=device_points)
+    write_api.write(bucket=bucket, org=org, record=netgear_points)
+    write_api.write(bucket=bucket, org=org, record=device_points)
     write_api.write(bucket=bucket, org=org, record=host_points)
 
     # Rest 10 seconds
