@@ -33,7 +33,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.3"
+      "version": "10.1.1"
     },
     {
       "type": "datasource",
@@ -101,7 +101,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 500,
+          "max": 1000,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -120,7 +120,7 @@
               },
               {
                 "color": "green",
-                "value": 500
+                "value": 1000
               }
             ]
           },
@@ -147,7 +147,7 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.1",
       "targets": [
         {
           "alias": "DownSpeed",
@@ -235,6 +235,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -424,7 +425,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 500,
+          "max": 1000,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -443,7 +444,7 @@
               },
               {
                 "color": "green",
-                "value": 500
+                "value": 1000
               }
             ]
           },
@@ -470,7 +471,7 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.1",
       "targets": [
         {
           "alias": "DownSpeed",
@@ -558,6 +559,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -810,7 +812,7 @@
         "showUnfilled": true,
         "valueMode": "color"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.1",
       "targets": [
         {
           "alias": "$tag_deviceName",
@@ -875,6 +877,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1025,7 +1028,7 @@
         "showUnfilled": true,
         "valueMode": "color"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.1",
       "targets": [
         {
           "alias": "$tag_deviceName",
@@ -1090,6 +1093,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1202,7 +1206,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1232,7 +1237,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.1",
       "targets": [
         {
           "datasource": {
@@ -1456,6 +1461,6 @@
   "timezone": "",
   "title": "Network Monitoring",
   "uid": "c5378ed3-b9a1-4b82-a026-358615e6f25a",
-  "version": 22,
+  "version": 4,
   "weekStart": ""
 }

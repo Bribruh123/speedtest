@@ -34,7 +34,7 @@ def get_device_speeds(dictData):
         .field("deviceName", device['name'])  
          .field("upSpeed", float(device['uploadSpeedStr'].split(" ")[0]))
        .field("downSpeed", float(device['downloadSpeedStr'].split(" ")[0]))
-          .field("priority", device['priority'])
+          .field("priority", device['priorityStr'])
           .field("connType", device['connection'])
           .field("ip", device['ip'])
           .field("deviceModel", device['model'])
