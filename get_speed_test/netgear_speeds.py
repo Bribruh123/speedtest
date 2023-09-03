@@ -76,10 +76,19 @@ while True:
 
     payload = {}
     headers = {
-      'Authorization': 'Basic {}'.format(encoded.decode("ascii")),
-      'Cookie': 'XSRF_TOKEN=2596016862'
+      'Authorization': 'Basic {}'.format(encoded.decode("ascii"))
     }
 
+
+    url = "http://routerlogin.net/"
+
+    response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+    print(response)
+    print(response.headers)
+    if 'Set-Cookie' in response.headers:
+        headers['Cookie'] = response.headers['Set-Cookie'].split(";")[0]
+        response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+        print(response)
 
     url = "http://routerlogin.net/ajax/devices_table_result"
 
