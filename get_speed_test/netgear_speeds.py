@@ -12,8 +12,8 @@ import base64
 def get_netgear_speeds(dictData):
 
     # Router speeds
-    downSpeed = float(response.text.split(";")[0])/1000000
-    upSpeed = float(response.text.split(";")[1])/1000000
+    downSpeed = float(response.text.split(";")[1])/1000000
+    upSpeed = float(response.text.split(";")[0])/1000000
     netgear_point = (
         Point("Netgear_speeds")
         .tag("tagname1", "tagvalue1")
